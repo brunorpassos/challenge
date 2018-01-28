@@ -5,20 +5,31 @@
 .message-list {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
 	align-items: flex-end;
+	overflow-y: scroll;
 	padding: 0.4em;
 	list-style: none;
   min-height: 10em;
+  max-height: 10em;
+  height: 100%;
   background-color: #f3f3f3;
 }
 
+.message-list::-webkit-scrollbar {
+    width: 0.2em;
+} 
+
+.message-list::-webkit-scrollbar-thumb {
+    background-color: #13ad97;
+} 
+
 .sent-message {
 	display: flex;
-	max-width: 16em;
+	min-height: min-content;
 	word-break: break-word;
-	padding: 0.2em;
 	margin: 0.1em;
+	padding: 0.2em;
+	max-width: 16em;
 	border-radius: 0.2em;
 	background-color: #1eb98a;
 	box-shadow: 0 0.1em 0.1em 0 rgba(0,0,0,0.2);

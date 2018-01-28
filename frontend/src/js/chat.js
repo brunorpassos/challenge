@@ -36,8 +36,9 @@ creditas.chat = (function(){
     var listNode = document.createElement("li")
     var textNode = document.createTextNode(msg);
     listNode.setAttribute("class", "sent-message");
-    listNode.appendChild(textNode);
+    listNode.appendChild(textNode)
     msgBox.appendChild(listNode);
+    listNode.scrollIntoView();
   }
 
   function removeTextFromInput(inputTag) {
