@@ -1,0 +1,20 @@
+[{
+	"entries" :  [
+		{
+			"message_type": "send",
+			"message_text" : "enviou"
+		},
+		{
+			"message_type": "receive",
+			"message_text" : "recebeu"
+		},
+		{
+			"message_type": "receive",
+			"message_text" : "teste"			
+		}, 
+		{
+			"message_type": "send",
+			"message_text" : "ttestando quebra de texto para mensagens muito longas ou dashbsdhaudisauidhsasuidashuidaids palavras zuadas"
+		}
+	]
+}]

@@ -4,6 +4,7 @@
 
 .message-list {
 	display: flex;
+	margin: 6px 0;
 	flex-direction: column;
 	align-items: flex-end;
 	overflow-y: scroll;
