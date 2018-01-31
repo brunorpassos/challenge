@@ -33,12 +33,12 @@ creditas.webRTC = (function() {
     disconnectButton.addEventListener('click', disconnectPeers, false);
     sendButton.addEventListener('click', sendMessage, false);
     
-    // messageInputBox.addEventListener("keypress", function(e) { 
-    //   var pressedKey = e.which || e.keyCode;
-    //   if (pressedKey == 13 && !document.getElementById('cred-btn__send').disabled) {
-    //     sendMessage();
-    //   }
-    // });
+    messageInputBox.addEventListener("keypress", function(e) { 
+      var pressedKey = e.which || e.keyCode;
+      if (pressedKey == 13 && !document.getElementById('cred-btn__send').disabled) {
+        sendMessage();
+      }
+    });
   }
   
   // Connect the two peers. Normally you look for and connect to a remote

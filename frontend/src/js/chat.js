@@ -9,39 +9,36 @@ creditas.chat = (function(){
 
   function eventHandlers() {
     document.getElementById("cred-btn__send").addEventListener("click", function(e) {
-      resolveMessage(e);
-
-      var msg = e.currentTarget.previousElementSibling.value;
-      var inputTag = e.currentTarget.previousElementSibling;
-      var msgBox = e.currentTarget.parentElement.previousElementSibling;
-      if (msg != "") {
-        sendMessage(msg, msgBox);
-      }
+      resolveMessage(e);      
     }, false);
 
     document.getElementById("cred-input__text").addEventListener("keypress", function(e) { 
       var pressedKey = e.which || e.keyCode;
       if (pressedKey == 13) {
         resolveMessage(e);
-        
-        var msg = e.currentTarget.value;
-        var msgBox = e.currentTarget.parentElement.previousElementSibling;
-        var inputTag = e.currentTarget;
-        if (msg != "") {
-          sendMessage(msg, msgBox);
-        }
       }
     }, false);
   }
 
-  function resolveMessage() {
+  function resolveMessage(e) {
+    var msg = "";
+    var msgDisplay = null;
 
+    if (e.constructor.name == "MouseEvent") {
+      msg = e.currentTarget.previousElementSibling.value;
+      msgDisplay = e.currentTarget.parentElement.previousElementSibling;
+    } else {
+      msg = e.currentTarget.value;
+      msgDisplay = e.currentTarget.parentElement.previousElementSibling;
+    }
+
+    if (msg != "") { sendMessage(msg, msgDisplay); }
   }
 
-  function sendMessage(msg, msgBox) {
-    var listNode = createDOMElements(msg);
-    msgBox.appendChild(listNode);
-    listNode.scrollIntoView();
+  function sendMessage(msg, msgDisplay) {
+    var printMessage = createDOMElements(msg);
+    msgDisplay.appendChild(printMessage);
+    printMessage.scrollIntoView();
   }
 
   function createDOMElements(msg) {
