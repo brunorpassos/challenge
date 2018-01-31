@@ -6,7 +6,6 @@
 	display: flex;
 	margin: 6px 0;
 	flex-direction: column;
-	align-items: flex-end;
 	overflow-y: scroll;
 	padding: 0.4em;
 	list-style: none;
@@ -17,15 +16,16 @@
 }
 
 .message-list::-webkit-scrollbar {
-    width: 0.2em;
+  width: 0.2em;
 } 
 
 .message-list::-webkit-scrollbar-thumb {
-    background-color: #13ad97;
+  background-color: #13ad97;
 } 
 
 .sent-message {
 	display: flex;
+	align-self: flex-end;
 	min-height: min-content;
 	word-break: break-word;
 	margin: 0.1em;
@@ -34,4 +34,17 @@
 	border-radius: 0.2em;
 	background-color: #1eb98a;
 	box-shadow: 0 0.1em 0.1em 0 rgba(0,0,0,0.2);
+}
+
+.received-message {
+	display: flex;
+	align-self: flex-start;
+	min-height: min-content;
+	word-break: break-word;
+	margin: 0.1em;
+	padding: 0.2em;
+	max-width: 16em;
+	border-radius: 0.2em;
+	background-color: red;
+	box-shadow: 0 0.1em 0.1em 0 rgba(0,0,0,0.2);	
 }

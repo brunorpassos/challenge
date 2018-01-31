@@ -6,23 +6,46 @@
 
     <title>Chat</title>
     <link rel="stylesheet" href="./stylesheets/chat.css" type="text/css" media="all">
+    <script type="text/javascript" src="./js/RTC.js"></script>
     <script type="text/javascript" src="./js/chat.js"></script>
   </head>
 
   <body>
-    <h1>Chat</h1>
+    <div class="controlbox">
+      <button id="connectButton" name="connectButton" class="buttonleft">
+        Connect
+      </button>
+      <button id="disconnectButton" name="disconnectButton" class="buttonright" disabled>
+        Disconnect
+      </button>
+    </div>
     
+    <h1>Dispositivo 1</h1>  
     <div class="messages">
       <ul class="message-list background-design"></ul>
 
       <div class="message-input">
         <input type="text" id="cred-input__text"/>
-        <button type="button" class="send-button" id="cred-btn__send">Enviar</button>
+        <button type="button" class="send-button" id="cred-btn__send" disabled>Enviar</button>
       </div>
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <h1>Dispositivo 2</h1>
+  <div class="messages">
+    <div class="messagebox">
+      <ul class="message-list" id="receivebox"></ul>
+    </div>  
+  </div>  
+  
   </body>
 
   <script>
     creditas.chat.init();
+    creditas.webRTC;
   </script>
 </html>

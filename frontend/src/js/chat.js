@@ -4,17 +4,16 @@ creditas.chat = (function(){
   'use strict';
 
   function init(){
-    general();
+    eventHandlers();
   }
 
-  function general() {
+  function eventHandlers() {
     document.getElementById("cred-btn__send").addEventListener("click", function(e) {
       var msg = e.currentTarget.previousElementSibling.value;
       var inputTag = e.currentTarget.previousElementSibling;
       var msgBox = e.currentTarget.parentElement.previousElementSibling;
       if (msg != "") {
         sendMessage(msg, msgBox);
-        removeTextFromInput(inputTag); 
       }
     }, false);
 
@@ -25,24 +24,24 @@ creditas.chat = (function(){
         var msgBox = e.currentTarget.parentElement.previousElementSibling;
         var inputTag = e.currentTarget;
         if (msg != "") {
-          sendMessage(msg, msgBox); 
-          removeTextFromInput(inputTag);           
+          sendMessage(msg, msgBox);
         }
       }
     }, false);
   }
 
   function sendMessage(msg, msgBox) {
-    var listNode = document.createElement("li")
-    var textNode = document.createTextNode(msg);
-    listNode.setAttribute("class", "sent-message");
-    listNode.appendChild(textNode)
+    var listNode = createDOMElements(msg);
     msgBox.appendChild(listNode);
     listNode.scrollIntoView();
   }
 
-  function removeTextFromInput(inputTag) {
-    inputTag.value = "";
+  function createDOMElements(msg) {
+    var listNode = document.createElement("li")
+    var textNode = document.createTextNode(msg);
+    listNode.setAttribute("class", "sent-message");
+    listNode.appendChild(textNode);
+    return listNode;
   }
 
   return {
