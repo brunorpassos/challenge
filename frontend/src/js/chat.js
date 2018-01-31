@@ -9,6 +9,8 @@ creditas.chat = (function(){
 
   function eventHandlers() {
     document.getElementById("cred-btn__send").addEventListener("click", function(e) {
+      resolveMessage(e);
+
       var msg = e.currentTarget.previousElementSibling.value;
       var inputTag = e.currentTarget.previousElementSibling;
       var msgBox = e.currentTarget.parentElement.previousElementSibling;
@@ -20,6 +22,8 @@ creditas.chat = (function(){
     document.getElementById("cred-input__text").addEventListener("keypress", function(e) { 
       var pressedKey = e.which || e.keyCode;
       if (pressedKey == 13) {
+        resolveMessage(e);
+        
         var msg = e.currentTarget.value;
         var msgBox = e.currentTarget.parentElement.previousElementSibling;
         var inputTag = e.currentTarget;
@@ -28,6 +32,10 @@ creditas.chat = (function(){
         }
       }
     }, false);
+  }
+
+  function resolveMessage() {
+
   }
 
   function sendMessage(msg, msgBox) {

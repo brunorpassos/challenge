@@ -7,9 +7,7 @@ creditas.webRTC = (function() {
   var connectButton = null;
   var disconnectButton = null;
   var sendButton = null;
-  var sendButton2 = null;
   var messageInputBox = null;
-  var messageInputBox2 = null;
   var receiveBox = null;
   
   var localConnection = null;   // RTCPeerConnection for our "local" connection
@@ -26,9 +24,7 @@ creditas.webRTC = (function() {
     connectButton = document.getElementById('connectButton');
     disconnectButton = document.getElementById('disconnectButton');
     sendButton = document.getElementById('cred-btn__send');
-    sendButton2 = document.getElementById('cred-btn__send2');
     messageInputBox = document.getElementById('cred-input__text');
-    messageInputBox2 = document.getElementById('cred-input__text2');
     receiveBox = document.getElementById('receivebox');
 
     // Set event listeners for user interface widgets
@@ -37,12 +33,12 @@ creditas.webRTC = (function() {
     disconnectButton.addEventListener('click', disconnectPeers, false);
     sendButton.addEventListener('click', sendMessage, false);
     
-    messageInputBox.addEventListener("keypress", function(e) { 
-      var pressedKey = e.which || e.keyCode;
-      if (pressedKey == 13 && !document.getElementById('cred-btn__send').disabled) {
-        sendMessage();
-      }
-    });
+    // messageInputBox.addEventListener("keypress", function(e) { 
+    //   var pressedKey = e.which || e.keyCode;
+    //   if (pressedKey == 13 && !document.getElementById('cred-btn__send').disabled) {
+    //     sendMessage();
+    //   }
+    // });
   }
   
   // Connect the two peers. Normally you look for and connect to a remote
