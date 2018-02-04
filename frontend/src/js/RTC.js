@@ -20,13 +20,19 @@ creditas.webRTC = (function() {
   
   // Set things up, connect event listeners, etc.
   
-  function startup() {
+  function startup(currentEvent) {
     connectButton = document.getElementById('connectButton');
     disconnectButton = document.getElementById('disconnectButton');
     sendButton = document.getElementById('cred-btn__send');
     messageInputBox = document.getElementById('cred-input__text');
     receiveBox = document.getElementById('receivebox');
 
+    if (currentEvent.type != "load") {
+      var currentReceiver = currentEvent.parentElement.getAttribute("data-device") == "device1" ? "receivebox2" : "receivebox" 
+      sendButton = document.getElementById(currentEvent.id);
+      messageInputBox = document.getElementById(currentEvent.previousElementSibling.id);
+      receiveBox = document.getElementById(currentReceiver);
+    }
     // Set event listeners for user interface widgets
 
     connectButton.addEventListener('click', connectPeers, false);
@@ -215,4 +221,8 @@ creditas.webRTC = (function() {
   // function once the page is done loading.
   
   window.addEventListener('load', startup, false);
+
+  return {
+    startup: startup
+  }
 })();

@@ -29,11 +29,11 @@
     
     <h1>Dispositivo 1</h1>  
     <div class="messages">
-      <ul class="message-list background-design"></ul>
+      <ul class="message-list background-design" id="receivebox"></ul>
 
-      <div class="message-input">
+      <div class="message-input" data-device="device1">
         <input type="text" id="cred-input__text" disabled/>
-        <button type="button" class="send-button" id="cred-btn__send" disabled>Enviar</button>
+        <button type="button" class="send-button" id="cred-btn__send" onclick="creditas.webRTC.startup(this)" disabled>Enviar</button>
       </div>
     </div>
 
@@ -44,13 +44,11 @@
 
   <h1>Dispositivo 2</h1>
   <div class="messages">
-    <div class="messagebox">
-      <ul class="message-list" id="receivebox"></ul>
-    </div>
+    <ul class="message-list" id="receivebox2"></ul>
 
-    <div class="message-input">
+    <div class="message-input" data-device="device2">
         <input type="text" id="cred-input__text2"/>
-        <button type="button" class="send-button" id="cred-btn__send" disabled>Enviar</button>
+        <button type="button" class="send-button" id="cred-btn__send2" onclick="creditas.webRTC.startup(this)" >Enviar</button>
     </div>
   </div>  
   
@@ -58,6 +56,5 @@
 
   <script>
     creditas.chat.init();
-    creditas.webRTC;
   </script>
 </html>
