@@ -53,7 +53,6 @@ creditas.chat = (function(){
   }
 
   function createDOMElements(msg) {
-    debugger;
     var listNode = document.createElement("li")
     var textNode = document.createTextNode(msg);
     listNode.setAttribute("class", "sent-message");
