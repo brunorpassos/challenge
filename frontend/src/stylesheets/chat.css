@@ -28,7 +28,7 @@
 	min-height: min-content;
 	word-break: break-word;
 	align-self: flex-end;
-	margin: 0.1em;
+	margin: 0.2em 0;
 	padding: 0.2em;
 	max-width: 16em;
 	border-radius: 0.2em;
@@ -41,7 +41,7 @@
 	min-height: min-content;
 	word-break: break-word;
 	align-self: flex-start;
-	margin: 0.1em;
+	margin: 0.2em 0;
 	padding: 0.2em;
 	max-width: 16em;
 	border-radius: 0.2em;

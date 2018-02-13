@@ -24,12 +24,12 @@ creditas.FakeServer = (function() {
           return "Oi, tudo bom?"
           break;
       default:
-          return "Você esta abusando do meu conhecimento"
+          return "Não sei responder!"
     }
   }
 
   return {
-    submitedMessage
+    submitedMessage: submitedMessage
   }
 
 }());
