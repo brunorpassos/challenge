@@ -10,27 +10,24 @@ creditas.Message = (function() {
     receivedMessage: "received-message"
   }
 
-  function sendMessage(sentMessage) {
-    displayMessage(sentMessage, messageType.sentMessage);
-    creditas.FakeServer.submitedMessage(sentMessage)
+  function sendMessage(message) {
+    creditas.UserInterface.displayMessage(parseMessage(message), messageType.sentMessage);
+    creditas.FakeServer.submitedMessage(message)
   }
 
-  function receiveMessage(receivedMessage) {
-    displayMessage(receivedMessage, messageType.receivedMessage)
+  function receiveMessage(message) {
+    creditas.UserInterface.displayMessage(parseMessage(message), messageType.receivedMessage)
   }
 
-  function displayMessage(message, messageType) {
-    var listNode = document.createElement("li")
-    var textNode = document.createTextNode(message);
-    listNode.setAttribute("class", messageType);
-    listNode.appendChild(textNode)
-    document.getElementById("cred__msg-screen").appendChild(listNode);
-    listNode.scrollIntoView();
+  function parseMessage(message) {
+    var messageData = new Object();
+    messageData.text = message;
+    messageData.timestamp = new Date();
+    return messageData;
   }
 
   return {
     sendMessage: sendMessage,
     receiveMessage: receiveMessage
   }
-
 }());

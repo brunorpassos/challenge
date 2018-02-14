@@ -9,13 +9,13 @@ creditas.ChatEvents = (function() {
   }
 
   function onClickEvent() {
-    document.getElementById("cred-btn__send").addEventListener("click", function(e) {
+    document.querySelector(".message-input__button").addEventListener("click", function(e) {
       resolveMessage();
     }, false);    
   }
   
   function onKeypressEvent() {
-    document.getElementById("cred-input__text").addEventListener("keypress", function(e) { 
+    document.querySelector(".message-input__text").addEventListener("keypress", function(e) { 
       var pressedKey = e.which || e.keyCode;
       if (pressedKey == 13) {
         resolveMessage();
@@ -29,18 +29,17 @@ creditas.ChatEvents = (function() {
   }
 
   function sendMessage() {
-    var msgText = document.getElementById("cred-input__text").value || "";
+    var msgText = document.querySelector(".message-input__text").value || "";
     if (msgText) {
       creditas.Message.sendMessage(msgText);
     }
   }
 
   function cleanInputMessage() {
-    document.getElementById("cred-input__text").value = "";
+    document.querySelector(".message-input__text").value = "";
   }
 
   return {
     eventsHandler: eventsHandler
   }
 }());
-

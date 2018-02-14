@@ -1,5 +1,6 @@
 .messages {
   width: 20em;
+  margin: 2em 0;
 }
 
 .message-list {
@@ -16,15 +17,16 @@
 }
 
 .message-list::-webkit-scrollbar {
-    width: 0.2em;
+  width: 0.2em;
 } 
 
 .message-list::-webkit-scrollbar-thumb {
-    background-color: #13ad97;
+  background-color: #13ad97;
 } 
 
 .sent-message {
 	display: flex;
+	flex-direction: column;
 	min-height: min-content;
 	word-break: break-word;
 	align-self: flex-end;
@@ -38,6 +40,7 @@
 
 .received-message {
 	display: flex;
+	flex-direction: column;
 	min-height: min-content;
 	word-break: break-word;
 	align-self: flex-start;
@@ -47,4 +50,9 @@
 	border-radius: 0.2em;
 	background-color: #fff;
 	box-shadow: 0 0.1em 0.1em 0 rgba(0,0,0,0.2);
+}
+
+.message-time {
+	font-size: 0.7em;
+	align-self: flex-end;
 }

@@ -2,20 +2,24 @@ describe("ChatEvents", function() {
   describe("when user tries to send a valid message", function() {
     var textInput = null;
     var sendBtn = null;
-    
+    var messageTime = null;
+    var timeNow = null;
+
     beforeEach(function() {
-      textInput = document.getElementById("cred-input__text").value = "Olá";
-      inputBox = document.getElementById("cred-input__text");
-      sendBtn = document.getElementById("cred-btn__send");
+      textInput = document.querySelector(".message-input__text").value = "Olá";
+      inputBox = document.querySelector(".message-input__text");
+      sendBtn = document.querySelector(".message-input__button");
+      messageTime = new Date();
+      timeNow = creditas.UserInterface.parseTime(messageTime);
     });
 
     afterEach(function() {
-      document.getElementById("cred__msg-screen").innerHTML = "";
+      document.querySelector(".message-list").innerHTML = "";
     });
 
     it("should send message after click on submit btn", function() {
       sendBtn.click();
-      expect(document.getElementById("cred__msg-screen").firstElementChild.innerHTML).toBe(textInput)
+      expect(document.querySelector(".message-list").firstElementChild.innerText.replace(/\n|/g, "")).toBe(textInput + timeNow)
     });
 
     it("should send a message on enter keypress", function() {
@@ -29,7 +33,7 @@ describe("ChatEvents", function() {
       enterEvent.metaKey = false;
       enterEvent.bubbles = true;
       inputBox.dispatchEvent(enterEvent);
-      expect(document.getElementById("cred__msg-screen").firstElementChild.innerHTML).toBe(textInput)
+      expect(document.querySelector(".message-list").firstElementChild.innerText.replace(/\n|/g, "")).toBe(textInput + timeNow)
     });
 
     it("should clean the input after sending the message", function() {
@@ -43,14 +47,18 @@ describe("ChatEvents", function() {
     var sendBtn = null;
 
     beforeEach(function() {
-      textInput = document.getElementById("cred-input__text").value = "";
-      inputBox = document.getElementById("cred-input__text");
-      sendBtn = document.getElementById("cred-btn__send");
+      textInput = document.querySelector(".message-input__text").value = "";
+      inputBox = document.querySelector(".message-input__text");
+      sendBtn = document.querySelector(".message-input__button");
+    });
+
+    afterEach(function() {
+      document.querySelector(".message-list").innerHTML = "";
     });
 
     it("should not send a message on click", function() {
       sendBtn.click();
-      expect(document.getElementById("cred__msg-screen").children.length).toBe(0)
+      expect(document.querySelector(".message-list").children.length).toBe(0)
     });
 
     it("should not send a message with on enter event", function() {
@@ -64,8 +72,7 @@ describe("ChatEvents", function() {
       enterEvent.metaKey = false;
       enterEvent.bubbles = true;
       inputBox.dispatchEvent(enterEvent);
-      expect(document.getElementById("cred__msg-screen").children.length).toBe(0)
+      expect(document.querySelector(".message-list").children.length).toBe(0)
     });
-
   });
 });

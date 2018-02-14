@@ -31,5 +31,4 @@ creditas.FakeServer = (function() {
   return {
     submitedMessage: submitedMessage
   }
-
 }());

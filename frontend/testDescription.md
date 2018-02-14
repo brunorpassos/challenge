@@ -12,7 +12,9 @@ Não me preocupei muito com o CSS da aplicação, pois entendi que a preocupaç�
 
 Tive a preocupação também de evitar que textos longos, ou palavras muito longas gerassem interferência ou quebrassem os elementos na tela. Qualquer mensagem muito longa ou palavra muito longa terá um "width" do elemento determinado, evitando que o elemento atravesse a fronteira do elemento pai.
 
-# O que aprendi com o desafio?
+Outra coisa que notei foi a utilização da metodologia BEM de CSS na Creditas. Portanto inseri as classes conforme previsto na BEM.
+
+## O que aprendi com o desafio?
 
 Inicialmente eu cheguei no resultado final de inserir listas de mensagens na tela de maneira muito rápida, porém sem muita consistência de código, não seguindo o proposto: "O objetivo é avaliar sua experiênica em escrever código de fácil manutenção, baixo acoplamento, e alta coesão.". Estava somente querendo analisar a dificuldade da atividade. Porém logo notei que a dificuldade do teste não estava em chegar no resultado final, e sim em COMO chegar no resultado final.
 
@@ -20,15 +22,17 @@ Entendi que o que o time da Creditas queria era um código que seguisse os princ
 
 Encontrei um BUG no Google-Chrome ao realizar o teste. A barra de rolagem não funciona caso o desenvolvedor tente aplicar Flexbox com "flex-direction: column-reverse". Simplismente a "scrollbar" nao aparece quando os elementos extrapolam o limite imposto. Existe um bug reportado ja para o Firefox e Chrome mas ainda nao foi resolvido.
 
-# Como foi feito o desafio
+## Como foi feito o desafio
 
 Atualmente os navegadores em sua maioria não suportam o ES2015 - ES2018 sendo ainda necessário um "Babel" como transpilador para transformar o código em Javascript que o navegador entenda. Entendi que o teste estava relacionado somente ao que foi proposto, não necessitando de um NodeJS com depência de "Babel" com Webpack ou qualquer outras tecnologias externas. Portanto foquei em realizar o teste de maneira simples e sem dependências externas. 
 
-Como não tinha o ES2015 ou posterior, não pude utilizar o conceito de classe dessa nova tecnologia. Utilizei portanto o Revealing Module Pattern que é uma evolução do Module Pattern e que também emula o conceito de classes. Portanto criei 2 módulos, o ChatEvents.js e o Message.js. 
+Como não tinha o ES2015 ou posterior, não pude utilizar o conceito de classe dessa nova tecnologia. Utilizei portanto o Revealing Module Pattern que é uma evolução do Module Pattern e que também emula o conceito de classes. Portanto criei 3 módulos, o ChatEvents.js, o Message.js e o UserInterface.js. 
 
-- ChatEvents.js : o módulo foi criado para lidar com o comportamento na tela. Ele rastreia os cliques ou o evento de apertar o "Enter". É responsável também por acionar o módulo Message.js para que esse lide com as mensagens. Outro comportamento que o módulo resolve é apagar a mensagem do "input" após o envio. 
+- ChatEvents.js : o módulo foi criado para lidar com os eventos na tela. Ele rastreia os cliques ou o evento de apertar o "Enter". É responsável também por acionar o módulo Message.js para que esse lide com as mensagens. Outro comportamento que o módulo resolve é apagar a mensagem do "input" após o envio. 
 
-- Message.js : o módulo foi criado para lidar com o envio e recebimento de mensagens. O módulo é responsável também por criar o elemento do DOM que imprime a mensagem na tela, com a respectiva classe de CSS para recebimento ou envio de mensagem, como num chat como "Whatsapp".
+- Message.js : o módulo foi criado para lidar com o envio e recebimento de mensagens. O módulo inicialmente era também responsável por criar o elemento do DOM que imprime a mensagem na tela, mas depois percebi que seria melhor deixar essa atribuição com outro módulo, portanto criei o UserInterface.js. 
+
+- UserInterface.js : o módulo foi feito para manipular o DOM da tela. Ele cria os nós e os imprime da maneira correta, juntamente com o horário da mensagem.
 
 O módulo FakeServer.js foi criado somente para demonstrar o baixo acoplamento e para retornar uma mensagem aleatória simulando um servidor.  
 
@@ -40,3 +44,4 @@ Os testes foram feitos visando trabalhar o comportamento do chat na tela e paral
 
 - MessageSpec.js: testa se a mensagem que é mostrada é a mesma que a inserida no campo. Testa se o elemento criado é uma "li" (lista). Testa também se a mensagem trata-se de uma mensagem enviada ou recebida. Outra preocupação foi testar a questão da quebra do HTML quando temos uma mensagem muito longa ou uma palavra muito grande.  
 
+Como observação, depois que notei que a Creditas utilizava a metodologia BEM de semantica de CSS, os testes foram cruciais para a adaptação ao padrão, já que tinha utilizado IDs em varios atributos e sem os testes tornaria muito trabalhosa a substituição para a metodologia.
