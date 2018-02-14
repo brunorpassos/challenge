@@ -6,23 +6,36 @@
 
     <title>Chat</title>
     <link rel="stylesheet" href="./stylesheets/chat.css" type="text/css" media="all">
-    <script type="text/javascript" src="./js/chat.js"></script>
+    <script type="text/javascript" src="./js/ChatEvents.js"></script>
+    <script type="text/javascript" src="./js/Message.js"></script>
+    <script type="text/javascript" src="./js/UserInterface.js"></script>
+    <script type="text/javascript" src="./js/FakeServer.js"></script>
+
+    <link rel="shortcut icon" type="image/png" href="../jasmine/lib/jasmine-3.0.0/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="../jasmine/lib/jasmine-3.0.0/jasmine.css">
+
+    <script type="text/javascript" src="../jasmine/lib/jasmine-3.0.0/jasmine.js"></script>
+    <script type="text/javascript" src="../jasmine/lib/jasmine-3.0.0/jasmine-html.js"></script>
+    <script type="text/javascript" src="../jasmine/lib/jasmine-3.0.0/boot.js"></script>
+
+    <script src="../jasmine/spec/MessageSpec.js"></script>
+    <script src="../jasmine/spec/ChatEventsSpec.js"></script>
+    <script src="../jasmine/spec/UserInterfaceSpec.js"></script>
   </head>
 
   <body>
     <h1>Chat</h1>
-    
-    <div class="messages">
-      <ul class="message-list background-design"></ul>
+      <div class="messages">
+        <ul class="message-list"></ul>
 
-      <div class="message-input">
-        <input type="text" id="cred-input__text"/>
-        <button type="button" class="send-button" id="cred-btn__send">Enviar</button>
-      </div>
+        <div class="message-input">
+          <input type="text" class="message-input__text"/>
+          <button type="button" class="message-input__button">Enviar</button>
+        </div>
     </div>
   </body>
 
   <script>
-    creditas.chat.init();
+    creditas.ChatEvents.eventsHandler();
   </script>
 </html>
